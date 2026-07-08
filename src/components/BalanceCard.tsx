@@ -64,6 +64,7 @@ export function BalanceCard({
 
       {!isInitialLoad && !error && balance !== null && (
         <div className="flex flex-col items-center gap-2">
+          <p className="text-sm font-medium text-muted">Balance</p>
           <div className="flex flex-wrap items-center justify-center gap-2">
             <span className="text-2xl font-bold tracking-tight text-electric sm:text-3xl">
               {formatXlm(balance)} XLM
