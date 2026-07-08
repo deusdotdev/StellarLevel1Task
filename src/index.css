@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+  Dark theme + purple / electric-green accents.
+  In Tailwind v4 we define custom colors with @theme.
+*/
+@theme {
+  --color-bg: #0b0f14;
+  --color-surface: #121821;
+  --color-border: #1e293b;
+  --color-text: #e2e8f0;
+  --color-muted: #94a3b8;
+  --color-purple: #8b5cf6;
+  --color-purple-hover: #7c3aed;
+  --color-electric: #39ff14;
+  --color-danger: #ef4444;
+  --color-danger-bg: #450a0a;
+}
+
+/* Global dark page background */
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*
+  Shared UI utilities — keeps loading/disabled/card styles consistent
+  across ConnectButton, BalanceCard, and PaymentForm without new components.
+*/
+@layer components {
+  .ui-card {
+    @apply w-full max-w-md rounded-lg border border-border bg-surface px-4 py-5 sm:px-6;
+  }
+
+  .ui-spinner {
+    @apply h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-purple border-t-transparent;
+  }
+
+  .ui-spinner-inverse {
+    @apply h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-white border-t-transparent;
+  }
+
+  .ui-btn-primary {
+    @apply rounded-lg bg-purple px-6 py-3 font-semibold text-white transition hover:bg-purple-hover disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .ui-btn-secondary {
+    @apply rounded-lg border border-border bg-surface px-4 py-2 text-sm font-medium text-muted transition hover:border-purple hover:text-text;
+  }
+
+  .ui-input {
+    @apply rounded-lg border border-border bg-bg px-4 py-2.5 text-sm text-text placeholder:text-muted focus:border-purple focus:outline-none disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .ui-alert-error {
+    @apply w-full rounded-lg border border-danger bg-danger-bg px-4 py-3 text-center text-sm text-danger;
+  }
+
+  .ui-alert-success {
+    @apply w-full max-w-md rounded-lg border border-electric/40 bg-electric/10 px-4 py-4 text-center sm:px-6;
+  }
+}
